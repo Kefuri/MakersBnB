@@ -15,4 +15,8 @@ class Makersbnb < Sinatra::Base
   get '/listings/confirm_listing' do
     erb :confirm_listing
   end
+
+  get '/listings' do
+    erb :listings
+  end
 end
