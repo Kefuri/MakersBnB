@@ -9,8 +9,30 @@ class Makersbnb < Sinatra::Base
   enable :sessions
 
   get '/' do
-    "hello world"
+    erb(:index)
   end
 
+  post '/login' do
+    Users.create(email: params["email"], password: params["password"])
+    redirect '/login'
+  end
+
+  get '/login' do
+    erb(:login)
+  end
+
+  post '/spaces' do
+    if (Users.where(email: params["email"], password: params["password"]).exists?)
+      session[:user] = (Users.find_by email: params["email"])
+      redirect '/spaces'
+    else
+      redirect '/login'
+    end
+  end
+
+  get '/spaces' do
+    @user_email = session[:user].email
+    erb(:spaces)
+  end
 
 end
