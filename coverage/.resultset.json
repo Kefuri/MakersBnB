@@ -1,7 +1,23 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/echo/Documents/GitHub/MakersBnB/spec/features/create_listing_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      }
     },
-    "timestamp": 1582562368
+    "timestamp": 1582565583
   }
 }
