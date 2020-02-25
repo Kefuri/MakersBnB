@@ -17,7 +17,8 @@ feature 'User Log-In' do
     fill_in('email', with: 'josh@wemail.com')
     fill_in('password', with: 'secretpassword')
     click_button("Log in")
-    expect(page).to have_content("Spaces")
+    expect(page).to have_content("josh@wemail.com")
+    #testing for signed in user's email
   end
 
 end

@@ -40,11 +40,20 @@ class Makersbnb < Sinatra::Base
     erb :create_listing
   end
 
+  post '/listings/create' do
+    @user_id = session[:user].id
+    Spaces.create(title: params["name_field"], description: params["desc_field"], price_per_night: params["price_field"], users_id: @user_id)
+    redirect '/listings'
+  end
+
   get '/listings/confirm_listing' do
     erb :confirm_listing
   end
 
   get '/listings' do
+    @user_id = session[:user].id
+    @listings = Spaces.where users_id: @user_id
+    p "EEEEEEEEEEEEEEEEEEEEEEEE"
     erb :listings
   end
 end
