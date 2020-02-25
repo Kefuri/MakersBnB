@@ -34,6 +34,8 @@ class Makersbnb < Sinatra::Base
   get '/spaces' do
     @user_email = session[:user].email
     erb(:spaces)
+  end
+  
   get '/listings/create' do
     erb :create_listing
   end
