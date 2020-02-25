@@ -3,7 +3,7 @@ require 'sinatra/base'
 require_relative './models/users'
 require_relative './models/spaces'
 require_relative './models/bookings'
-require_relative './models/listings'
+require_relative './models/availabilities'
 
 class Makersbnb < Sinatra::Base
   enable :sessions
@@ -55,5 +55,11 @@ class Makersbnb < Sinatra::Base
     @user_id = session[:user].id
     @listings = Spaces.where users_id: @user_id
     erb :'spaces/yours'
+  end
+
+  get '/spaces/details' do
+    @id = params["id"]
+    @space = Spaces.find_by id: params["id"]
+    erb :'spaces/details'
   end
 end
