@@ -12,12 +12,19 @@ DB_ENV ||= 'test'
 connection_details = YAML::load(File.open('./config/database.yml'))
 ActiveRecord::Base.establish_connection(connection_details[DB_ENV])
 
+RSpec.configure do |config|
+  config.before(:each) do
+    ActiveRecord::Base.connection.execute("TRUNCATE spaces, users, listings, bookings")
+  end
+end
+
 Capybara.app = Makersbnb
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::Console,
   # Want a nice code coverage website? Uncomment this next line!
   SimpleCov::Formatter::HTMLFormatter
 ])
+
 SimpleCov.start
 RSpec.configure do |config|
   config.after(:suite) do
