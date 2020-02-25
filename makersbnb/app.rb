@@ -23,6 +23,7 @@ class Makersbnb < Sinatra::Base
 
   post '/spaces' do
     if (Users.where(email: params["email"], password: params["password"]).exists?)
+      # save the row for that user as an object to the session
       session[:user] = (Users.find_by email: params["email"])
       redirect '/spaces'
     else
