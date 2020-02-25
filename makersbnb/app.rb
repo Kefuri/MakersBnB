@@ -8,9 +8,15 @@ require_relative './models/listings'
 class Makersbnb < Sinatra::Base
   enable :sessions
 
-  get '/' do
-    "hello world"
+  get '/listings/create' do
+    erb :create_listing
   end
 
+  get '/listings/confirm_listing' do
+    erb :confirm_listing
+  end
 
+  get '/listings' do
+    erb :listings
+  end
 end
