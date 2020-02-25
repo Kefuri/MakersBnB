@@ -1,1 +1,5 @@
-<h2>Cute ass cottage</h2>
+<h2>Your listings</h2>
+<% @listings.each do |listing|%>
+<li><%= listing.title%></li>
+<% end %>
+

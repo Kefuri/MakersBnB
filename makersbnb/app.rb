@@ -40,11 +40,17 @@ class Makersbnb < Sinatra::Base
     erb :create_listing
   end
 
+  post '/listings/create' do
+    Spaces.create(title: params["name_field"], description: params["desc_field"], price_per_night: params["price_field"])
+    redirect '/listings'
+  end
+
   get '/listings/confirm_listing' do
     erb :confirm_listing
   end
 
   get '/listings' do
+    @listings = Spaces.all
     erb :listings
   end
 end
