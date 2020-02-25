@@ -1,0 +1,26 @@
+<html>
+<head>
+<style>
+div {
+  background-color: lightgrey;
+  width: 300px;
+  border: 15px solid blue;
+  padding: 20px;
+  margin: 10px;
+}
+</style>
+</head>
+<body>
+<h1>Spaces</h1>
+Welcome <%= @user_email %>
+<a href="/spaces/create">List A New Space</a>
+<a href="/spaces/yours">Your Listed Spaces</a>
+<ul>
+<ul>
+  <% @spaces.each do |space| %>
+    <div><p>Title: <%=space.title%> </p>
+    <p>Description: <%=space.description%> </p>
+    <p>Price per night: <%=space.price_per_night%> </p>
+    </div>
+  <% end %>
+</ul>

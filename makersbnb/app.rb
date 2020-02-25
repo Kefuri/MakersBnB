@@ -21,38 +21,39 @@ class Makersbnb < Sinatra::Base
     erb(:login)
   end
 
-  post '/spaces' do
+  post '/spaces/list' do
     if (Users.where(email: params["email"], password: params["password"]).exists?)
       # save the row for that user as an object to the session
       session[:user] = (Users.find_by email: params["email"])
-      redirect '/spaces'
+      redirect '/spaces/list'
     else
       redirect '/login'
     end
   end
 
-  get '/spaces' do
+  get '/spaces/list' do
     @user_email = session[:user].email
-    erb(:spaces)
+    @spaces = Spaces.all
+    erb :'spaces/list'
   end
   
-  get '/listings/create' do
-    erb :create_listing
+  get '/spaces/create' do
+    erb :'spaces/create'
   end
 
-  post '/listings/create' do
+  post '/spaces/create' do
     @user_id = session[:user].id
     Spaces.create(title: params["name_field"], description: params["desc_field"], price_per_night: params["price_field"], users_id: @user_id)
-    redirect '/listings'
+    redirect '/spaces/confirm'
   end
 
-  get '/listings/confirm_listing' do
-    erb :confirm_listing
+  get '/spaces/confirm' do
+    erb :'spaces/confirm'
   end
 
-  get '/listings' do
+  get '/spaces/yours' do
     @user_id = session[:user].id
     @listings = Spaces.where users_id: @user_id
-    erb :listings
+    erb :'spaces/yours'
   end
 end
