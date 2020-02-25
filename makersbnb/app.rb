@@ -53,7 +53,6 @@ class Makersbnb < Sinatra::Base
   get '/listings' do
     @user_id = session[:user].id
     @listings = Spaces.where users_id: @user_id
-    p "EEEEEEEEEEEEEEEEEEEEEEEE"
     erb :listings
   end
 end
