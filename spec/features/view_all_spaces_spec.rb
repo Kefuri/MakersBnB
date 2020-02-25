@@ -6,5 +6,6 @@ feature 'view listing page' do
     create_cottage_listing
     click_link("Back to spaces")    
     expect(page).to have_content('Cute ass cottage')
+    expect(page).to have_content('Your listings')
   end
 end

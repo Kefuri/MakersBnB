@@ -1,7 +1,7 @@
 require_relative '../webhelpers.rb'
 
 feature 'User Log-In' do
-
+  
   scenario 'A non-existing user cannot log in' do
     sign_up # as josh@wemail.com
     expect(page).to have_content("Please log in")
