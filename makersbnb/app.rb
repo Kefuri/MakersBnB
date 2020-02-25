@@ -41,7 +41,8 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/listings/create' do
-    Spaces.create(title: params["name_field"], description: params["desc_field"], price_per_night: params["price_field"])
+    @user_id = session[:user].id
+    Spaces.create(title: params["name_field"], description: params["desc_field"], price_per_night: params["price_field"], users_id: @user_id)
     redirect '/listings'
   end
 
@@ -50,7 +51,9 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/listings' do
-    @listings = Spaces.all
+    @user_id = session[:user].id
+    @listings = Spaces.where users_id: @user_id
+    p "EEEEEEEEEEEEEEEEEEEEEEEE"
     erb :listings
   end
 end
