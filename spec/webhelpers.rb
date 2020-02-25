@@ -7,7 +7,6 @@ end
 
 def sign_up_and_sign_in
   sign_up # as josh@wemail.com
-  expect(page).to have_content("Please log in")
   fill_in('email', with: 'josh@wemail.com')
   fill_in('password', with: 'secretpassword')
   click_button("Log in")
