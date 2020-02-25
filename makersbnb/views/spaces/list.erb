@@ -20,6 +20,7 @@ Welcome <%= @user_email %>
   <% @spaces.each do |space| %>
     <div><p>Title: <%=space.title%> </p>
     <p>Description: <%=space.description%> </p>
-    <p>Price per night: <%=space.price_per_night%> </p></div>
+    <p>Price per night: <%=space.price_per_night%> </p>
+    </div>
   <% end %>
 </ul>
