@@ -1,0 +1,29 @@
+<html>
+<head>
+<style>
+div {
+  background-color: lightgrey;
+  width: 300px;
+  border: 15px solid blue;
+  padding: 20px;
+  margin: 10px;
+}
+</style>
+</head>
+<body>
+<h1>Spaces</h1>
+Welcome <%= @user_email %>
+<form action="/spaces/create" method="get" >
+<input type="submit" value="List Your Space" />
+</form>
+<form action="/spaces/yours" method="get" >
+<input type="submit" value="Your Listed Spaces" />
+</form>
+<ul>
+<ul>
+  <% @spaces.each do |space| %>
+    <div><p>Title: <%=space.title%> </p>
+    <p>Description: <%=space.description%> </p>
+    <p>Price per night: <%=space.price_per_night%> </p></div>
+  <% end %>
+</ul>
