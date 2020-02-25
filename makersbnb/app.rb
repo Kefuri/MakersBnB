@@ -58,8 +58,7 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/spaces/details' do
-    @id = params["id"]
-    @space = Spaces.find_by id: params["id"]
+    @space = Spaces.find_by id: params["space_id"]
     erb :'spaces/details'
   end
 end

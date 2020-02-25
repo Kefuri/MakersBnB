@@ -23,7 +23,7 @@ Welcome <%= @user_email %>
       <p>Description: <%=space.description%> </p>
       <p>Price per night: <%=space.price_per_night%> </p>
       <form action="/spaces/details" method="get">
-        <input type ="hidden" name ="id" value=<%=space.id%>>
+        <input type ="hidden" name ="space_id" value=<%=space.id%>>
         <input type="submit" value="More Details">
       </form>
     </div>

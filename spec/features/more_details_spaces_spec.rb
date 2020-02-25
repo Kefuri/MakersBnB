@@ -5,6 +5,8 @@ feature 'create a space' do
       click_link("Back to spaces")
       click_button("More Details")
       expect(page).to have_content("Cute ass cottage")
+      expect(page).to have_content("This cottage is deadass so cute")
+      expect(page).to have_content("69")
     end
   end
   
