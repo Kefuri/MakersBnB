@@ -13,12 +13,8 @@ div {
 <body>
 <h1>Spaces</h1>
 Welcome <%= @user_email %>
-<form action="/spaces/create" method="get" >
-<input type="submit" value="List Your Space" />
-</form>
-<form action="/spaces/yours" method="get" >
-<input type="submit" value="Your Listed Spaces" />
-</form>
+<a href="/spaces/create">List A New Space</a>
+<a href="/spaces/yours">Your Listed Spaces</a>
 <ul>
 <ul>
   <% @spaces.each do |space| %>
