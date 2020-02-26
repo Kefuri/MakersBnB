@@ -13,7 +13,6 @@ def sign_up_and_sign_in
 end
 
 def create_cottage_listing
-  sign_up_and_sign_in
   visit('/spaces/create')
   fill_in "name_field", with: "Cute ass cottage"
   fill_in "desc_field", with: "This cottage is deadass so cute"
