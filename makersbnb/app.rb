@@ -9,10 +9,6 @@ require_relative './models/loginhandling'
 class Makersbnb < Sinatra::Base
   enable :sessions
 
-  before 'get' do
-    proceed_if_logged_in
-  end
-
   get '/' do
     erb(:index)
   end
@@ -38,32 +34,38 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/spaces/list' do
+    proceed_if_logged_in
     @user_email = session[:user].email
     @spaces = Spaces.all
     erb :'spaces/list'
   end
   
   get '/spaces/create' do
+    proceed_if_logged_in
     erb :'spaces/create'
   end
 
   post '/spaces/create' do
+    proceed_if_logged_in
     @user_id = session[:user].id
     Spaces.create(title: params["name_field"], description: params["desc_field"], price_per_night: params["price_field"], users_id: @user_id)
     redirect '/spaces/confirm'
   end
 
   get '/spaces/confirm' do
+    proceed_if_logged_in
     erb :'spaces/confirm'
   end
 
   get '/spaces/yours' do
+    proceed_if_logged_in
     @user_id = session[:user].id
     @listings = Spaces.where users_id: @user_id
     erb :'spaces/yours'
   end
 
   get '/logout' do
+    proceed_if_logged_in
     session[:user].id = nil
     redirect '/login'
   end
