@@ -19,3 +19,16 @@ def create_cottage_listing
   fill_in "price_field", with: "69"
   click_button("Add Listing")
 end
+
+def create_users_and_space_and_booking
+  # user for space
+  Users.create(email: 'bob@bob.com', password: 'password1', id: 68)
+  # user for booking
+  Users.create(email: 'josh@wemail.com', password: 'secretpassword', id: 69)
+
+  # space belongs to bob
+  Spaces.create(title: "Bob's space", description: "Bob's place", price_per_night: 123, users_id: 68, id: 12)
+
+  # josh booking bob's space
+  Bookings.create(start_date: '01/01/20', end_date: '02/01/20', users_id: 69, spaces_id: 12)
+end
