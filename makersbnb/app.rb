@@ -3,7 +3,7 @@ require 'sinatra/base'
 require_relative './models/users'
 require_relative './models/spaces'
 require_relative './models/bookings'
-require_relative './models/listings'
+require_relative './models/availabilities'
 
 class Makersbnb < Sinatra::Base
   enable :sessions
@@ -55,6 +55,22 @@ class Makersbnb < Sinatra::Base
     @user_id = session[:user].id
     @listings = Spaces.where users_id: @user_id
     erb :'spaces/yours'
+  end
+
+
+  get '/spaces/details' do
+    @space = Spaces.find_by id: params["space_id"]
+    erb :'spaces/details'
+  end
+  post '/booking/confirmation' do 
+    @user_id = session[:user].id
+    @space_id = params["space_id"]
+    @booking = Bookings.create(start_date: params["booking"], end_date: params["booking"], users_id: @user_id, spaces_id: @space_id)
+    redirect 'booking/confirmation'
+  end
+
+  get '/booking/confirmation' do
+    erb :'/booking/confirmation'
   end
 
   get '/logout' do
