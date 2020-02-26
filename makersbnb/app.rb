@@ -64,11 +64,18 @@ class Makersbnb < Sinatra::Base
   post '/booking/confirmation' do 
     @user_id = session[:user].id
     @space_id = params["space_id"]
-    @booking = Bookings.create(start_date: params["booking"], end_date: params["booking"], users_id: @user_id, spaces_id: @space_id)
-    redirect 'booking/confirmation'
+    if (Bookings.where(start_date: params["booking"], spaces_id: @space_id).exists?)
+      redirect'/booking/error'
+    else
+      @booking = Bookings.create(start_date: params["booking"], end_date: params["booking"], users_id: @user_id, spaces_id: @space_id)
+      redirect 'booking/confirmation'
+    end
   end
 
   get '/booking/confirmation' do
     erb :'/booking/confirmation'
+  end
+  get '/booking/error' do
+    erb :'/booking/error'
   end
 end
