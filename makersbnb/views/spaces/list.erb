@@ -19,9 +19,14 @@ Welcome <%= @user_email %>
 <ul>
 <ul>
   <% @spaces.each do |space| %>
-    <div><p>Title: <%=space.title%> </p>
-    <p>Description: <%=space.description%> </p>
-    <p>Price per night: <%=space.price_per_night%> </p>
+    <div>
+      <p>Title: <%=space.title%> </p>
+      <p>Description: <%=space.description%> </p>
+      <p>Price per night: <%=space.price_per_night%> </p>
+      <form action="/spaces/details" method="get">
+        <input type ="hidden" name ="space_id" value=<%=space.id%>>
+        <input type="submit" value="More Details">
+      </form>
     </div>
   <% end %>
 </ul>
