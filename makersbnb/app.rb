@@ -4,9 +4,14 @@ require_relative './models/users'
 require_relative './models/spaces'
 require_relative './models/bookings'
 require_relative './models/listings'
+require_relative './models/loginhandling'
 
 class Makersbnb < Sinatra::Base
   enable :sessions
+
+  before 'get' do
+    proceed_if_logged_in
+  end
 
   get '/' do
     erb(:index)
@@ -21,6 +26,7 @@ class Makersbnb < Sinatra::Base
     erb(:login)
   end
 
+  # consider refactoring the route name (it's not 'spaces' responsibility to check whether a user exists)
   post '/spaces/list' do
     if (Users.where(email: params["email"], password: params["password"]).exists?)
       # save the row for that user as an object to the session
