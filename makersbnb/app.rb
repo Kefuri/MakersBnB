@@ -56,4 +56,10 @@ class Makersbnb < Sinatra::Base
     @listings = Spaces.where users_id: @user_id
     erb :'spaces/yours'
   end
+
+  get '/logout' do
+    session[:user].id = nil
+    redirect '/login'
+  end
+
 end
