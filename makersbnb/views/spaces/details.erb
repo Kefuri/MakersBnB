@@ -1,3 +1,9 @@
 <h1><%=@space.title%> </h1>
 <p>Description: <%=@space.description%> </p>
 <p>Price per night: <%=@space.price_per_night%> </p>
+<form action="/booking/confirmation" method ="post">
+  <label for="booking">Booking:</label>
+  <input type ="hidden" name="space_id" value=<%=@space.id%>>
+  <input type="date" id="booking" name="booking">
+  <input type="submit" name="Book Now">
+</form>
