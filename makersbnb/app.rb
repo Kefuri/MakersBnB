@@ -46,6 +46,8 @@ class Makersbnb < Sinatra::Base
   post '/spaces/create' do
     @user_id = session[:user].id
     Spaces.create(title: params["name_field"], description: params["desc_field"], price_per_night: params["price_field"], users_id: @user_id)
+    @space_id = Spaces.last.id
+    Availabilities.create(start_date: params["start_date"], end_date: params["end_date"], spaces_id: @space_id)
     redirect '/spaces/confirm'
   end
 
@@ -69,8 +71,7 @@ class Makersbnb < Sinatra::Base
   post '/booking/confirmation' do 
     @user_id = session[:user].id
     @space_id = params["space_id"]
-    p params["start_date"]
-    if Bookings.bookings_must_not_overlap(params["start_date"], params["end_date"])
+    if Bookings.valid?(params["start_date"], params["end_date"])
       @booking = Bookings.create(start_date: params["start_date"], end_date: params["end_date"], users_id: @user_id, spaces_id: @space_id)
       redirect 'booking/confirmation'
     else
