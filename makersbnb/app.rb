@@ -90,7 +90,7 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/booking/yours' do
-    # proceed_if_logged_in
+    proceed_if_logged_in
     @user_id = session[:user].id
     @bookings = Bookings.where users_id: @user_id
     erb :'/booking/yours'
