@@ -1,5 +1,6 @@
 require 'sinatra/activerecord'
 require 'sinatra/base'
+require 'sinatra/flash'
 require_relative './models/users'
 require_relative './models/spaces'
 require_relative './models/bookings'
@@ -7,6 +8,7 @@ require_relative './models/availabilities'
 
 class Makersbnb < Sinatra::Base
   enable :sessions
+  register Sinatra::Flash
 
   get '/' do
     erb(:index)
@@ -64,15 +66,17 @@ class Makersbnb < Sinatra::Base
   post '/booking/confirmation' do 
     @user_id = session[:user].id
     @space_id = params["space_id"]
-    if (Bookings.where(start_date: params["booking"], spaces_id: @space_id).exists?)
+    if (Bookings.where(start_date: params["start_date"], end_date: params["end_date"], spaces_id: @space_id).exists?)
       redirect'/booking/error'
     else
-      @booking = Bookings.create(start_date: params["booking"], end_date: params["booking"], users_id: @user_id, spaces_id: @space_id)
+      @booking = Bookings.create(start_date: params["start_date"], end_date: params["end_date"], users_id: @user_id, spaces_id: @space_id)
       redirect 'booking/confirmation'
     end
   end
 
   get '/booking/confirmation' do
+    @booking = Bookings.last
+    @space = Spaces.find_by id: @booking.spaces_id
     erb :'/booking/confirmation'
   end
   get '/booking/error' do
