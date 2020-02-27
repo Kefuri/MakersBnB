@@ -61,16 +61,18 @@ class Makersbnb < Sinatra::Base
 
   get '/spaces/details' do
     @space = Spaces.find_by id: params["space_id"]
+    session[:space_id] = params["space_id"]
     erb :'spaces/details'
   end
   post '/booking/confirmation' do 
     @user_id = session[:user].id
     @space_id = params["space_id"]
-    if (Bookings.where(start_date: params["start_date"], end_date: params["end_date"], spaces_id: @space_id).exists?)
-      redirect'/booking/error'
-    else
+    p params["start_date"]
+    if Bookings.bookings_must_not_overlap(params["start_date"], params["end_date"])
       @booking = Bookings.create(start_date: params["start_date"], end_date: params["end_date"], users_id: @user_id, spaces_id: @space_id)
       redirect 'booking/confirmation'
+    else
+      redirect 'booking/error'
     end
   end
 
@@ -80,6 +82,7 @@ class Makersbnb < Sinatra::Base
     erb :'/booking/confirmation'
   end
   get '/booking/error' do
-    erb :'/booking/error'
+    flash[:alert] = "This booking is unavailable due to a conflicting booking."
+    redirect("/spaces/details?space_id=#{session[:space_id]}")
   end
 end

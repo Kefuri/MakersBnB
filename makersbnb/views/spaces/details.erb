@@ -2,8 +2,12 @@
 <p>Description: <%=@space.description%> </p>
 <p>Price per night: <%=@space.price_per_night%> </p>
 <form action="/booking/confirmation" method ="post">
-  <label for="booking">Booking:</label>
+  <label for="start_date">From:</label>
   <input type ="hidden" name="space_id" value=<%=@space.id%>>
-  <input type="date" id="booking" name="booking">
+  <input type="date" id="start_date" name="start_date">
+  <label for="end_date">To:</label>
+  <input type="date" id="end_date" name="end_date">
   <input type="submit" name="Book Now">
 </form>
+
+<%= "#{flash[:alert]}" %>
