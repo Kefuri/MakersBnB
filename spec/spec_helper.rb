@@ -15,7 +15,7 @@ ActiveRecord::Base.establish_connection(connection_details[DB_ENV])
 
 RSpec.configure do |config|
   config.before(:each) do
-    ActiveRecord::Base.connection.execute("TRUNCATE spaces, users, listings, bookings")
+    ActiveRecord::Base.connection.execute("TRUNCATE spaces, users, availabilities, bookings")
   end
 end
 

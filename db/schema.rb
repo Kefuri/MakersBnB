@@ -10,16 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_142548) do
+ActiveRecord::Schema.define(version: 2020_02_26_121640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "availabilities", force: :cascade do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.bigint "spaces_id"
+    t.index ["spaces_id"], name: "index_availabilities_on_spaces_id"
+  end
 
   create_table "bookings", force: :cascade do |t|
     t.datetime "start_date"
     t.datetime "end_date"
     t.bigint "users_id"
     t.bigint "spaces_id"
+    t.boolean "approval_status"
     t.index ["spaces_id"], name: "index_bookings_on_spaces_id"
     t.index ["users_id"], name: "index_bookings_on_users_id"
   end
@@ -44,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_142548) do
     t.string "password"
   end
 
+  add_foreign_key "availabilities", "spaces", column: "spaces_id"
   add_foreign_key "bookings", "spaces", column: "spaces_id"
   add_foreign_key "bookings", "users", column: "users_id"
   add_foreign_key "listings", "spaces", column: "spaces_id"
