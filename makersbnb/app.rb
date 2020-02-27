@@ -4,7 +4,6 @@ require 'sinatra/flash'
 require_relative './models/users'
 require_relative './models/spaces'
 require_relative './models/bookings'
-require_relative './models/listings'
 require_relative './models/loginhandling'
 require_relative './models/availabilities'
 
