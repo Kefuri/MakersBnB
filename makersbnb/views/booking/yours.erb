@@ -21,13 +21,13 @@
     <h1>My Bookings</h1>
     <% @bookings.each do |booking| %>
       <div>
-        @space = Spaces.find_by id: booking.space_id
+        <% @space = Spaces.find_by id: booking.spaces_id %>
         <p>Title: <%= @space.title %></p>
         <form action="/spaces/details" method="get">
-          <input type ="hidden" name ="space_id" value=<%=@space.id%>>
+          <input type ="hidden" name ="space_id" value=<%= @space.id %>>
           <input type="submit" value="More Details">
         </form>
-        <p>Booked</p>
+        <p>Booking dates:</p>
         <p>From: <%= booking.start_date %></p>
         <p>To: <%= booking.end_date %></p>
         <p>Approval Status: Requested</p>
