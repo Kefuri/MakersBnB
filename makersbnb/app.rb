@@ -57,11 +57,11 @@ class Makersbnb < Sinatra::Base
     erb :'spaces/yours'
   end
 
-
   get '/spaces/details' do
     @space = Spaces.find_by id: params["space_id"]
     erb :'spaces/details'
   end
+  
   post '/booking/confirmation' do 
     @user_id = session[:user].id
     @space_id = params["space_id"]
@@ -73,9 +73,14 @@ class Makersbnb < Sinatra::Base
     erb :'/booking/confirmation'
   end
 
+  get '/booking/yours' do
+    @user_id = session[:user].id
+    @bookings = Bookings.where users_id: @user_id
+    erb :'/booking/yours'
+  end
+
   get '/logout' do
     session[:user].id = nil
     redirect '/login'
   end
-
 end

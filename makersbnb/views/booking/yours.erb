@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <style>
+      div {
+        background-color: lightgrey;
+        width: 300px;
+        border: 15px solid blue;
+        padding: 20px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="navbar">
+      <li><a href="/spaces/create">List A New Space</a></li>
+      <li><a href="/spaces/yours">Your Listed Spaces</a></li>
+      <li><a href="/booking/yours">My Bookings</a></li>
+      <li><a href="">My Guests</a></li>
+      <li><a href="/logout">Log out</a></li>
+    </ul>
+    <h1>My Bookings</h1>
+    <% @bookings.each do |booking| %>
+      <div>
+        @space = Spaces.find_by id: booking.space_id
+        <p>Title: <%= @space.title %></p>
+        <form action="/spaces/details" method="get">
+          <input type ="hidden" name ="space_id" value=<%=@space.id%>>
+          <input type="submit" value="More Details">
+        </form>
+        <p>Booked</p>
+        <p>From: <%= booking.start_date %></p>
+        <p>To: <%= booking.end_date %></p>
+        <p>Approval Status: Requested</p>
+      </div>
+    <% end %>
+  </body>
+</html>
