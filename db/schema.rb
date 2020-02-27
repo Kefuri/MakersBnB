@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_27_112752) do
+ActiveRecord::Schema.define(version: 2020_02_27_133827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_112752) do
     t.date "end_date"
     t.bigint "users_id"
     t.bigint "spaces_id"
-    t.boolean "approval_status"
+    t.string "approval_status", default: "Pending"
     t.index ["spaces_id"], name: "index_bookings_on_spaces_id"
     t.index ["users_id"], name: "index_bookings_on_users_id"
   end

@@ -11,5 +11,9 @@ class Bookings < ActiveRecord::Base
         else
             return false
         end
-    end                
+    end       
+    def self.your_pending_requests(user_id)
+        Bookings.where Spaces.users_id = user_id, approval_status: "Pending"
+    end
+               
 end
