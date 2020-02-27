@@ -61,6 +61,13 @@ class Makersbnb < Sinatra::Base
     erb :'spaces/yours'
   end
 
+  get '/spaces/yours/requests' do
+    @user_id = session[:user].id
+    @listings = Spaces.where users_id: @user_id
+    
+    erb :'spaces/yours/requests'
+  end
+
 
   get '/spaces/details' do
     @space = Spaces.find_by id: params["space_id"]
