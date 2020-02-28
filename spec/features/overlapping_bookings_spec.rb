@@ -9,7 +9,7 @@ feature "a user should not be able to book dates that are overlapping other book
     fill_in("start_date", with:"2020-03-11")
     fill_in("end_date", with:"2020-03-15")
     click_button("Book Now")
-    expect(page).to have_content("This booking is unavailable due to a conflicting booking.")
+    expect(page).to have_content("This booking is unavailable at this time.")
   end
 
   scenario "User cannot book because there is a booking that starts and ends in their booking period" do
@@ -20,7 +20,7 @@ feature "a user should not be able to book dates that are overlapping other book
     fill_in("start_date", with:"2020-03-11")
     fill_in("end_date", with:"2020-03-15")
     click_button("Book Now")
-    expect(page).to have_content("This booking is unavailable due to a conflicting booking.")
+    expect(page).to have_content("This booking is unavailable at this time.")
   end
 
   scenario "User cannot book because there is a booking that starts within the booking period" do
@@ -31,7 +31,7 @@ feature "a user should not be able to book dates that are overlapping other book
     fill_in("start_date", with:"2020-03-11")
     fill_in("end_date", with:"2020-03-15")
     click_button("Book Now")
-    expect(page).to have_content("This booking is unavailable due to a conflicting booking.")
+    expect(page).to have_content("This booking is unavailable at this time.")
   end
 
   scenario "user cannot book because there is a booking that encompasses their own" do
@@ -42,7 +42,7 @@ feature "a user should not be able to book dates that are overlapping other book
     fill_in("start_date", with:"2020-03-11")
     fill_in("end_date", with:"2020-03-15")
     click_button("Book Now")
-    expect(page).to have_content("This booking is unavailable due to a conflicting booking.")
+    expect(page).to have_content("This booking is unavailable at this time.")
   end
 end
 

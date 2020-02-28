@@ -8,6 +8,7 @@ require 'capybara/rspec'
 require 'rspec'
 require 'simplecov'
 require 'simplecov-console'
+require 'webhelpers'
 
 DB_ENV ||= 'test'
 connection_details = YAML::load(File.open('./config/database.yml'))

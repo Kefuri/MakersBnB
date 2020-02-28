@@ -3,6 +3,6 @@
     <h1>Booking Successful</h1>
   </div>
   <div class="middle">
-    <p>You booked <%= @space.title %> from <%= @booking.start_date %> to <%= @booking.end_date %>.</p>
+    <p>You booked <%= @space.title %> from <%= @booking.start_date.to_s.split('-').reverse.join('/') %> to <%= @booking.end_date.to_s.split('-').reverse.join('/') %>.</p>
   </div>
 </div>
