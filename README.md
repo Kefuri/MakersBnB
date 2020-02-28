@@ -1,15 +1,21 @@
-# Makersbnb
+### [Makers Academy](http://www.makersacademy.com) - Week 6 group project
 
-Makers Group Project (Week 6) - buiding an Airbnb clone.
+Contibutors: [Josh Blumberg](https://github.com/jlblumberg) | [Chris Eadie](https://github.com/saidbyced) | [Richard Pattinson](https://github.com/richardpattinson)
+__________________________________________________________________________________________________________________
+
+[Outline](#Outline) | [Specifications](#Specifications) | [User Stories](#User_Stories) | [Installation Instructions](#Installation_Instructions) | [Tech stack](#Tech_stack) | [Example run](#Example_run) | [Future work](#Future_work)
+
+## <a name="Outline">Outline</a>
+
+Work in a team of four to build a functional clone of Airbnb.
 
 ## Specifications
 
-Specifications and wireframe mockup provided [here](https://github.com/makersacademy/course/blob/master/makersbnb/specification_and_mockups.md "Makersbnb specifications").
-
+Specifications and original wireframe mockup [here](https://github.com/makersacademy/course/blob/master/makersbnb/specification_and_mockups.md "Makersbnb specifications").
 
 ## User Stories
 
-The following user stories were created from the specifications and test driven into creation. 
+We derived the following user stories from the specifications and test driven into creation. 
 
 ```
 As a user,
@@ -74,7 +80,34 @@ I want to see what bookings I’ve requested.
 
 ```
 
-## Tech Stack
+## <a name="Installation_Instructions">Installation Instructions</a>
+
+### Prerequisite setup:
+- Clone this repo to your local machine and cd into it
+- Run the command `gem install bundle` (if you don't have bundle already)
+- Run the command `brew install postgresql`
+- When these installations are complete, run `bundle`
+
+### Database setup:
+![See database stuctural planning here](./reference/database_structure.jpg)
+
+To set up the databases, run the following commands:
+
+```
+rake build_db
+RACK_ENV='test' rake build_db
+RACK_ENV='production' rake build_db
+```
+This will also seed the databases with some test data (for viewing and using the site).
+
+### Running the site
+- Run the server with command `rackup`
+- Visit `localhost:9292` to use the site
+
+### Testing
+- Tests can be run using Rspec. Run command: `rspec`
+
+## <a name="Tech_stack">Tech stack</a>
 
 Front-end:
 - HTML & CSS
@@ -87,17 +120,13 @@ Back-end:
 
 Testing:
 - RSpec
+- Capybara
 - SimpleCov
 
-## Databases
+## <a name="Example_run">Example run</a>
 
-![Database stucture](./reference/database_structure.jpg)
+## <a name="Future_work">Future work</a>
 
-To set up the databases, run the following commands in terminal:
+You can see in the spec files that unfortunately we didn't have time to finish the final feature, owners being able to see and approve booking requests. In future we would implement the features to get these tests to pass, and that would satisfy all the MVP specs. 
 
-```
-rake build_db
-RACK_ENV='test' rake build_db
-RACK_ENV='production' rake build_db
-```
-This will also seed the databases with some test data (for viewing and using the site).
+
