@@ -1,26 +1,10 @@
-<html>
-  <head>
-    <style>
-      div {
-        background-color: lightgrey;
-        width: 300px;
-        border: 15px solid blue;
-        padding: 20px;
-        margin: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <ul id="navbar">
-      <li><a href="/spaces/create">List A New Space</a></li>
-      <li><a href="/spaces/yours">Your Listed Spaces</a></li>
-      <li><a href="/booking/yours">My Bookings</a></li>
-      <li><a href="">My Guests</a></li>
-      <li><a href="/logout">Log out</a></li>
-    </ul>
+<div class="grid-container">
+  <div class="header">
     <h1>My Bookings</h1>
+  </div>
+  <div class="middle">
     <% @bookings.each do |booking| %>
-      <div>
+      <div class="list_item">
         <% @space = Spaces.find_by id: booking.spaces_id %>
         <p>Title: <%= @space.title %></p>
         <form action="/spaces/details" method="get">
@@ -30,8 +14,8 @@
         <p>Booking dates:</p>
         <p>From: <%= booking.start_date %></p>
         <p>To: <%= booking.end_date %></p>
-        <p>Approval Status: Requested</p>
+        <p>Approval Status: <%= booking.approval_status %></p>
       </div>
     <% end %>
-  </body>
-</html>
+  </div>
+</div>
