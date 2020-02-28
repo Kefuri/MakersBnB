@@ -93,7 +93,7 @@ class Makersbnb < Sinatra::Base
   
   get '/booking/error' do
     proceed_if_logged_in
-    flash[:alert] = "This booking is unavailable due to a conflicting booking."
+    flash[:alert] = "This booking is unavailable at this time."
     redirect("/spaces/details?space_id=#{session[:space_id]}")
   end
 

@@ -32,7 +32,6 @@
   .middle,
   .right {
     padding: 10px;
-    height: 490px; /* Should be removed. Only for demonstration */ 
   }
   
   /* Style the left column */

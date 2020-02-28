@@ -5,7 +5,7 @@ feature 'view your spaces' do
     sign_up_and_sign_in
     create_cottage_listing
     click_link("Back to spaces")
-    click_link("Your Listed Spaces")   
+    click_link("Your Spaces")   
     expect(page).to have_content('Cute ass cottage')
   end
 end
