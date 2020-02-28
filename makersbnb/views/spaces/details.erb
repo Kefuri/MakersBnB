@@ -15,9 +15,8 @@
       <input type="date" id="end_date" name="end_date">
       <input type="submit" name="Book Now">
     </form>
+    <div class="flash">
+      <p><%= "#{flash[:alert]}" %></p>
+    </div>
   </div>
-</div>
-
-<div class="flash">
-  <%= "#{flash[:alert]}" %>
 </div>
