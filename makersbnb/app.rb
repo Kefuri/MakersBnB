@@ -64,31 +64,35 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/spaces/yours/requests' do
+    proceed_if_logged_in
     @user_id = session[:user].id
     @listings = Spaces.where users_id: @user_id
-    
     erb :'spaces/yours/requests'
   end
 
   get '/spaces/details' do
+    proceed_if_logged_in
     @space = Spaces.find_by id: params["space_id"]
     session[:space_id] = params["space_id"]
     erb :'spaces/details'
   end
 
-  post '/booking/confirmation' do 
+  post '/booking/confirmation' do
+    proceed_if_logged_in
     @user_id = session[:user].id
     @space_id = params["space_id"]
     validate_booking_and_move_on
   end
 
   get '/booking/confirmation' do
+    proceed_if_logged_in
     @booking = Bookings.last
     @space = Spaces.find_by id: @booking.spaces_id
     erb :'/booking/confirmation'
   end
   
   get '/booking/error' do
+    proceed_if_logged_in
     flash[:alert] = "This booking is unavailable due to a conflicting booking."
     redirect("/spaces/details?space_id=#{session[:space_id]}")
   end
