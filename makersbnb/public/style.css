@@ -4,6 +4,8 @@
   
   body {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(230, 255, 255);
+    text-align: center;
   }
   
   /* Style the header */
@@ -30,7 +32,7 @@
   .middle,
   .right {
     padding: 10px;
-    height: 490px; /* Should be removed. Only for demonstration */
+    height: 490px; /* Should be removed. Only for demonstration */ 
   }
   
   /* Style the left column */
@@ -42,6 +44,13 @@
   /* Style the middle column */
   .middle {
     grid-area: middle;
+
+  }
+
+  .list_item {
+    border-style: solid;
+    border-color: black;
+    border-width: 7px; 
   }
 
   /* Style the middle column */
