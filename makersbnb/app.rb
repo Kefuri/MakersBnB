@@ -24,15 +24,9 @@ class Makersbnb < Sinatra::Base
     erb(:login)
   end
 
-  # consider refactoring the route name (it's not 'spaces' responsibility to check whether a user exists)
   post '/spaces/list' do
-    if (Users.where(email: params["email"], password: params["password"]).exists?)
-      # save the row for that user as an object to the session
-      session[:user] = (Users.find_by email: params["email"])
-      redirect '/spaces/list'
-    else
-      redirect '/login'
-    end
+    return_user_object_if_registered
+    proceed_if_logged_in
   end
 
   get '/spaces/list' do
