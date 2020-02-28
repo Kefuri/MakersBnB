@@ -26,7 +26,7 @@ class Makersbnb < Sinatra::Base
   end
 
   post '/spaces/list' do
-    return_user_object_if_registered
+    store_user_session_if_registered
     proceed_if_logged_in
   end
 

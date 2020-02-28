@@ -1,4 +1,4 @@
-def return_user_object_if_registered
+def store_user_session_if_registered
   if (Users.where(email: params["email"], password: params["password"]).exists?)
     session[:user] = (Users.find_by email: params["email"])
     redirect '/spaces/list'
