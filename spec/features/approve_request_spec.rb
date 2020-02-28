@@ -1,3 +1,4 @@
+# the following is a feature test for a feature which we didnt get a chance to build
 # feature "approving a booking request" do
 #     scenario 'user wants to book a night ' do
 #         Users.create(email: "bilbo@baggins.com", password: "bilbo")
