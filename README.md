@@ -74,3 +74,6 @@ rake db:migrate
 RACK_ENV=production rake db:migrate
 RACK_ENV=test rake db:migrate
 ```
+
+To insert some dummy data into the development database,
+Use `rake db:seed`
