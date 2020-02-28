@@ -1,15 +1,18 @@
-<h1>Create A Space</h1>
-
-<form action='/spaces/create' method="post">
-<h3>Space Name:</h3><input type="text" name="name_field" placeholder="Enter your Space's name">
-<br>
-<h3>Space Description:</h3><input type="text" name="desc_field" placeholder="Enter a short description of your Space...">
-<br>
-<h3>Price Per Night</h3><input type="text" name="price_field">
-<br>
-<h3>Avaliable From:</h3><input type="date" name="start_date">
-<br>
-<h3>Avaliable Until:</h3><input type="date" name="end_date">
-<br>
-<input type="submit" id="add_listing" value="Add Listing">
-</form>
+<div class="grid-container">
+  <div class="header">
+    <h1>Create A Space</h1>
+  </div>
+  <div class="middle">
+    <form action='/spaces/create' method="post">
+      <p>Space Name: <input type="text" name="name_field" placeholder="Enter your Space's name"></p>
+      <p>Space Description: <input type="text" name="desc_field" placeholder="Enter a short description of your Space..."></p>
+      <p>Price Per Night <input type="text" name="price_field"></p>
+      <p>Avaliable From: <input type="date" name="start_date"></p>
+      <p>Avaliable Until: <input type="date" name="end_date"></p>
+      <p><input type="submit" id="add_listing" value="Add Listing"></p>
+    </form>
+  </div>
+  <div class="footer">
+    <a href="/spaces/list">Back to spaces</a>
+  </div>
+</div>

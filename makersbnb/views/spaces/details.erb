@@ -1,13 +1,23 @@
-<h1><%=@space.title%> </h1>
-<p>Description: <%=@space.description%> </p>
-<p>Price per night: <%=@space.price_per_night%> </p>
-<form action="/booking/confirmation" method ="post">
-  <label for="start_date">From:</label>
-  <input type ="hidden" name="space_id" value=<%=@space.id%>>
-  <input type="date" id="start_date" name="start_date">
-  <label for="end_date">To:</label>
-  <input type="date" id="end_date" name="end_date">
-  <input type="submit" name="Book Now">
-</form>
+<div class="grid-container">
+  <div class="header">
+    <h1><%= @space.title %></h1>
+  </div>
+  <div class="middle">
+    <p>Description: <%=@space.description%> </p>
+    <p>Price per night: <%=@space.price_per_night%> </p>
+    <form action="/booking/confirmation" method ="post">
+      <h3>Make a booking</h3>
+      <p>Booking dates:</p>
+      <label for="start_date">From:</label>
+      <input type ="hidden" name="space_id" value=<%=@space.id%>>
+      <input type="date" id="start_date" name="start_date">
+      <label for="end_date">To:</label>
+      <input type="date" id="end_date" name="end_date">
+      <input type="submit" name="Book Now">
+    </form>
+  </div>
+</div>
 
-<%= "#{flash[:alert]}" %>
+<div class="flash">
+  <%= "#{flash[:alert]}" %>
+</div>
