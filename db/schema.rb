@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_27_112752) do
+ActiveRecord::Schema.define(version: 2020_02_27_145016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "availabilities", force: :cascade do |t|
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.date "start_date"
+    t.date "end_date"
     t.bigint "spaces_id"
     t.index ["spaces_id"], name: "index_availabilities_on_spaces_id"
   end
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_112752) do
     t.date "end_date"
     t.bigint "users_id"
     t.bigint "spaces_id"
-    t.boolean "approval_status"
+    t.string "approval_status", default: "Pending"
     t.index ["spaces_id"], name: "index_bookings_on_spaces_id"
     t.index ["users_id"], name: "index_bookings_on_users_id"
   end

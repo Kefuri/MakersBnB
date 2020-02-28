@@ -1,0 +1,10 @@
+<h1>"Requests for your Spaces"</h1>
+<ul>
+  <% @pending_bookings.each do |booking| %>
+    <div>
+      <p>From: <%=booking.start_date%> </p>
+      <p>To: <%=booking.end_date%> </p>
+      <p>Approval Status: <%=booking.approval_status%> </p>
+    </div>
+  <% end %>
+</ul>
