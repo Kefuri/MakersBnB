@@ -5,6 +5,7 @@ require_relative './models/users'
 require_relative './models/spaces'
 require_relative './models/bookings'
 require_relative './models/loginhandling'
+require_relative './models/bookinghandling'
 require_relative './models/availabilities'
 
 class Makersbnb < Sinatra::Base
@@ -24,15 +25,9 @@ class Makersbnb < Sinatra::Base
     erb(:login)
   end
 
-  # consider refactoring the route name (it's not 'spaces' responsibility to check whether a user exists)
   post '/spaces/list' do
-    if (Users.where(email: params["email"], password: params["password"]).exists?)
-      # save the row for that user as an object to the session
-      session[:user] = (Users.find_by email: params["email"])
-      redirect '/spaces/list'
-    else
-      redirect '/login'
-    end
+    store_user_session_if_registered
+    proceed_if_logged_in
   end
 
   get '/spaces/list' do
@@ -69,36 +64,35 @@ class Makersbnb < Sinatra::Base
   end
 
   get '/spaces/yours/requests' do
+    proceed_if_logged_in
     @user_id = session[:user].id
     @listings = Spaces.where users_id: @user_id
-    
     erb :'spaces/yours/requests'
   end
 
   get '/spaces/details' do
+    proceed_if_logged_in
     @space = Spaces.find_by id: params["space_id"]
     session[:space_id] = params["space_id"]
     erb :'spaces/details'
   end
 
-  post '/booking/confirmation' do 
+  post '/booking/confirmation' do
+    proceed_if_logged_in
     @user_id = session[:user].id
     @space_id = params["space_id"]
-    if Bookings.valid?(params["start_date"], params["end_date"])
-      @booking = Bookings.create(start_date: params["start_date"], end_date: params["end_date"], users_id: @user_id, spaces_id: @space_id)
-      redirect 'booking/confirmation'
-    else
-      redirect 'booking/error'
-    end
+    validate_booking_and_move_on
   end
 
   get '/booking/confirmation' do
+    proceed_if_logged_in
     @booking = Bookings.last
     @space = Spaces.find_by id: @booking.spaces_id
     erb :'/booking/confirmation'
   end
   
   get '/booking/error' do
+    proceed_if_logged_in
     flash[:alert] = "This booking is unavailable due to a conflicting booking."
     redirect("/spaces/details?space_id=#{session[:space_id]}")
   end

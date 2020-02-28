@@ -1,3 +1,5 @@
+# The below is a test for a requests feature which we did not get to building
+
 # feature 'display all booking requests' do
 #     scenario 'see all requests pending my approval' do
 #         Users.create(id: "700", email: "bilbo@baggins.com", password: "bilbo")
