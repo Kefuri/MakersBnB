@@ -1,0 +1,76 @@
+/* * {
+    box-sizing: border-box;
+  }
+   */
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* Style the header */
+  .header {
+    font-family: raleway;
+    grid-area: header;
+    background-color: rgb(200, 242, 248);
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+  }
+  
+  /* The grid container */
+  .grid-container {
+    display: grid;
+    grid-template-areas: 
+      'header header header header header header' 
+      'left middle middle middle middle right' 
+      'footer footer footer footer footer footer';
+    /* grid-column-gap: 10px; - if you want gap between the columns */
+  } 
+  
+  .left,
+  .middle,
+  .right {
+    padding: 10px;
+    height: 490px; /* Should be removed. Only for demonstration */
+  }
+  
+  /* Style the left column */
+  .left {
+    grid-area: left;
+    width: 250px;
+  }
+  
+  /* Style the middle column */
+  .middle {
+    grid-area: middle;
+  }
+
+  /* Style the middle column */
+  .flash {
+    color: red;
+  }
+  
+  /* Style the right column */
+  .right {
+    grid-area: right;
+    width: 250px;
+  }
+  
+  /* Style the footer */
+  .footer {
+    grid-area: footer;
+    background-color: rgb(230, 255, 255);
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+  @media (max-width: 600px) {
+    .grid-container  {
+      grid-template-areas: 
+        'header header header header header header' 
+        'left left left left left left' 
+        'middle middle middle middle middle middle' 
+        'right right right right right right' 
+        'footer footer footer footer footer footer';
+    }
+  }
