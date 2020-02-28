@@ -5,6 +5,7 @@ require_relative './models/users'
 require_relative './models/spaces'
 require_relative './models/bookings'
 require_relative './models/loginhandling'
+require_relative './models/bookinghandling'
 require_relative './models/availabilities'
 
 class Makersbnb < Sinatra::Base
@@ -78,12 +79,7 @@ class Makersbnb < Sinatra::Base
   post '/booking/confirmation' do 
     @user_id = session[:user].id
     @space_id = params["space_id"]
-    if Bookings.valid?(params["start_date"], params["end_date"])
-      @booking = Bookings.create(start_date: params["start_date"], end_date: params["end_date"], users_id: @user_id, spaces_id: @space_id)
-      redirect 'booking/confirmation'
-    else
-      redirect 'booking/error'
-    end
+    validate_booking_and_move_on
   end
 
   get '/booking/confirmation' do
