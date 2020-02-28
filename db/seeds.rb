@@ -36,3 +36,14 @@ bookings_list.each do |start, end_date, user, space|
   Bookings.create(start_date: start, end_date: end_date, users_id: user, spaces_id: space)
 end
 
+availabilities_list = [
+["2010-02-02",	"2030-02-02",	"1"],
+["2010-02-02",	"2030-02-02",	"2"],
+["2010-02-02",	"2030-02-02",	"3"],
+["2010-02-02",	"2030-02-02",	"4"],
+["2010-02-02",	"2030-02-02",	"5"]
+]
+
+availabilities_list.each do |start, end_date, space|
+  Availabilities.create(start_date: start, end_date: end_date, spaces_id: space)
+end
