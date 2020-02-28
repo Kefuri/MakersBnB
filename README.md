@@ -127,6 +127,4 @@ Testing:
 
 ## <a name="Future_work">Future work</a>
 
-You can see in the spec files that unfortunately we didn't have time to finish the final feature, owners being able to see and approve booking requests. In future we would implement the features to get these tests to pass, and that would satisfy all the MVP specs. 
-
-
+On a revisit of the project, we would build a system to allow for booking requests to be approved by the space's owner. Unfortunately we didn't have time to finish this feature, but we did build the tests for them. You can see the commented out tests in 'spec/features/approve_request_spec.rb' and 'spec/features/displaying_booking_requests_spec.rb'.
