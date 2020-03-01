@@ -124,7 +124,25 @@ Testing:
 
 ## <a name="Examples">Examples</a>
 
+Once you have signed up you can then log in:
 
+![Sign-up](https://i.imgur.com/iVKlJYH.png)
+
+Logging in takes you to a list of the places available for booking:
+
+![Spaces](https://i.imgur.com/zJayKPp.png)
+
+You can click on more details to view all the details of a space and to submit a booking request:
+
+![More-details](https://i.imgur.com/1j3vdbM.png)
+
+It will only let you book if the space is available: 
+
+![Warning](https://i.imgur.com/J0Gw0WM.png)
+
+Once you have booked you can see a list of your booking requests and their current status:
+
+![My-bookings](https://i.imgur.com/sMepFzm.png)
 
 ## <a name="Future_work">Future work</a>
 
