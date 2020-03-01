@@ -146,4 +146,4 @@ Once you have booked you can see a list of your booking requests and their curre
 
 ## <a name="Future_work">Future work</a>
 
-On a revisit of the project, we would build a system to allow for booking requests to be approved by the space's owner. Unfortunately we didn't have time to finish this feature, but we did build the tests for them. You can see the commented out tests in 'spec/features/approve_request_spec.rb' and 'spec/features/displaying_booking_requests_spec.rb'.
+On a revisit of the project, we would build a system to allow for booking requests to be approved by the space's owner. Unfortunately we didn't have time to finish this feature, but we did build the tests for it. You can see the commented out tests in 'spec/features/approve_request_spec.rb' and 'spec/features/displaying_booking_requests_spec.rb'.
