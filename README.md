@@ -3,7 +3,7 @@
 Contibutors: [Josh Blumberg](https://github.com/jlblumberg) | [Chris Eadie](https://github.com/saidbyced) | [Richard Pattinson](https://github.com/richardpattinson)
 __________________________________________________________________________________________________________________
 
-[Outline](#Outline) | [Specifications](#Specifications) | [User Stories](#User_Stories) | [Installation Instructions](#Installation_Instructions) | [Tech stack](#Tech_stack) | [Example run](#Example_run) | [Future work](#Future_work)
+[Outline](#Outline) | [Specifications](#Specifications) | [User Stories](#User_Stories) | [Installation Instructions](#Installation_Instructions) | [Tech stack](#Tech_stack) | [Examples](#Examples) | [Future work](#Future_work)
 
 ## <a name="Outline">Outline</a>
 
@@ -15,7 +15,7 @@ Specifications and original wireframe mockup [here](https://github.com/makersaca
 
 ## User Stories
 
-We derived the following user stories from the specifications and test driven into creation. 
+We derived the following user stories from the specifications and test drove them into creation. 
 
 ```
 As a user,
@@ -56,7 +56,7 @@ I want to have a log-out button that will do so.
 
 As a user, 
 so that I can’t do illegal things, 
-I want to only be able to visit functional pages if i'm logged in.
+I want to only be able to visit the site's pages if i'm logged in.
 
 As a user who wants to book,
 so that I can have a fantastic night away,
@@ -85,27 +85,26 @@ I want to see what bookings I’ve requested.
 ### Prerequisite setup:
 - Clone this repo to your local machine and cd into it
 - Run the command `gem install bundle` (if you don't have bundle already)
-- Run the command `brew install postgresql`
+- Run the command `brew install postgresql` (if you don't have homebrew installed, do that first. [Instructions here](https://github.com/Homebrew/install))
 - When these installations are complete, run `bundle`
 
 ### Database setup:
 [See original database plan here](https://user-images.githubusercontent.com/41115973/75557670-5a6d4380-5a38-11ea-920f-5700b61a3624.jpg)
 
-To set up the databases, run the following commands:
+To set up the databases with some seed data, run the following commands:
 
 ```
 rake build_db
 RACK_ENV='test' rake build_db
 RACK_ENV='production' rake build_db
 ```
-This will also seed the databases with some test data (for viewing and using the site).
 
 ### Running the site
 - Run the server with command `rackup`
 - Visit `localhost:9292` to use the site
 
 ### Testing
-- Tests can be run using Rspec. Run command: `rspec`
+- Tests can be run using Rspec. Run the command `rspec`
 
 ## <a name="Tech_stack">Tech stack</a>
 
@@ -123,8 +122,28 @@ Testing:
 - Capybara
 - SimpleCov
 
-## <a name="Example_run">Example run</a>
+## <a name="Examples">Examples</a>
+
+Once you have signed up you can then log in:
+
+![Sign-up](https://i.imgur.com/iVKlJYH.png)
+
+Logging in takes you to a list of the places available for booking:
+
+![Spaces](https://i.imgur.com/zJayKPp.png)
+
+You can click on more details to view all the details of a space and to submit a booking request:
+
+![More-details](https://i.imgur.com/1j3vdbM.png)
+
+It will only let you book if the space is available: 
+
+![Warning](https://i.imgur.com/J0Gw0WM.png)
+
+Once you have booked you can see a list of your booking requests and their current status:
+
+![My-bookings](https://i.imgur.com/sMepFzm.png)
 
 ## <a name="Future_work">Future work</a>
 
-On a revisit of the project, we would build a system to allow for booking requests to be approved by the space's owner. Unfortunately we didn't have time to finish this feature, but we did build the tests for them. You can see the commented out tests in 'spec/features/approve_request_spec.rb' and 'spec/features/displaying_booking_requests_spec.rb'.
+On a revisit of the project, we would build a system to allow for booking requests to be approved by the space's owner. Unfortunately we didn't have time to finish this feature, but we did build the tests for it. You can see the commented out tests in 'spec/features/approve_request_spec.rb' and 'spec/features/displaying_booking_requests_spec.rb'.
